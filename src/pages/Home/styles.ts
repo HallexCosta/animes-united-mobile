@@ -30,26 +30,26 @@ export const CategoriesContainer = styled.ScrollView`
   margin-bottom: 15px;
 `
 
-export const Category = styled.TouchableOpacity<HomeProps>`
-  border-style: solid;
-  border-bottom-width: ${props => (props.categoryActived ? '2px' : '0')};
+// export const Category = styled.TouchableOpacity<HomeProps>`
+//   border-style: solid;
+//   border-bottom-width: ${props => (props.categoryActived ? '2px' : '0')};
 
-  border-bottom-color: ${props => (props.categoryActived ? '#0C1EDF' : '#000')};
+//   border-bottom-color: ${props => (props.categoryActived ? '#0C1EDF' : '#000')};
 
-  margin-right: 15px;
+//   margin-right: 15px;
 
-  align-items: center;
-  justify-content: center;
-`
+//   align-items: center;
+//   justify-content: center;
+// `
 
-export const CategoryTitle = styled.Text`
-  color: #f9f8f7;
-  font-size: 14px;
-  line-height: 45px;
-  font-family: 'Nunito_700Bold';
+// export const CategoryTitle = styled.Text`
+//   color: #f9f8f7;
+//   font-size: 14px;
+//   line-height: 45px;
+//   font-family: 'Nunito_700Bold';
 
-  margin: 0 15px;
-`
+//   margin: 0 15px;
+// `
 
 export const Main = styled.ScrollView`
   width: 100%;
@@ -62,24 +62,24 @@ export const AnimesContainer = styled.ScrollView`
   flex-direction: row;
 `
 
-export const Anime = styled.View`
-  margin-right: 15px;
-`
+// export const Anime = styled.View`
+//   margin-right: 15px;
+// `
 
-export const AnimeTitle = styled.Text`
-  font-family: 'Nunito_700Bold';
-  margin-top: 10px;
-  color: #f9f8f7;
-  font-size: 14px;
-`
+// export const AnimeTitle = styled.Text`
+//   font-family: 'Nunito_700Bold';
+//   margin-top: 10px;
+//   color: #f9f8f7;
+//   font-size: 14px;
+// `
 
-export const AnimeDescription = styled.Text`
-  font-family: 'Nunito_300Light';
-  color: #444444ee;
-  font-size: 12px;
+// export const AnimeDescription = styled.Text`
+//   font-family: 'Nunito_300Light';
+//   color: #444444ee;
+//   font-size: 12px;
 
-  margin-top: 5px;
-`
+//   margin-top: 5px;
+// `
 
 export const SubTitleLastEpisodieTitle = styled.Text`
   margin-top: 35px;

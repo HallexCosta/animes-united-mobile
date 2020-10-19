@@ -6,18 +6,23 @@ import { Feather } from '@expo/vector-icons'
 import animeImg from '../../assets/images/darling-in-the-fran-xx.jpg'
 import animeThumbnailImg from '../../assets/images/anime-gataris-thumbnail.png'
 
+import { Utils } from '../../utils'
+
+import { Category } from '../../components/Category'
+import { Anime } from '../../components/Anime'
+
 import {
   Container,
   Header,
   Title,
   Main,
   CategoriesContainer,
-  Category,
-  CategoryTitle,
+  // Category,
+  // CategoryTitle,
   AnimesContainer,
-  Anime,
-  AnimeTitle,
-  AnimeDescription,
+  // Anime,
+  // AnimeTitle,
+  // AnimeDescription,
   SubTitleLastEpisodieTitle,
   LastEpisodiesContainer,
   LastEpisodieImage,
@@ -32,7 +37,6 @@ import {
   NavigateContainer,
   NavigateText
 } from './styles'
-import { activeButton } from '../../utils/activeButton'
 
 export type CategoriesProps = {
   all: boolean
@@ -89,15 +93,17 @@ export function Home(): JSX.Element {
   })
 
   function handleActiveCategoryButton(currentCategory: string) {
-    setCategories(activeButton(categories, currentCategory))
+    setCategories(
+      Utils.activeButton<CategoriesProps>(categories, currentCategory)
+    )
   }
 
   function handleActiveGenreButton(currentGenre: string) {
-    setGenres(activeButton(genres, currentGenre))
+    setGenres(Utils.activeButton<GenresProps>(genres, currentGenre))
   }
 
   function handleActiveNavigateButton(curretNavigate: string) {
-    setNavigates(activeButton(navigates, curretNavigate))
+    setNavigates(Utils.activeButton<NavigatesProps>(navigates, curretNavigate))
   }
 
   return (
@@ -110,64 +116,63 @@ export function Home(): JSX.Element {
       <Main>
         <CategoriesContainer showsHorizontalScrollIndicator={false} horizontal>
           <Category
+            name="All"
+            actived={categories.all}
             onPress={() => handleActiveCategoryButton('all')}
-            categoryActived={categories.all}
-          >
-            <CategoryTitle>All</CategoryTitle>
-          </Category>
+          />
           <Category
+            name="TV"
+            actived={categories.tv}
             onPress={() => handleActiveCategoryButton('tv')}
-            categoryActived={categories.tv}
-          >
-            <CategoryTitle>TV</CategoryTitle>
-          </Category>
+          />
           <Category
+            name="Movie"
+            actived={categories.movie}
             onPress={() => handleActiveCategoryButton('movie')}
-            categoryActived={categories.movie}
-          >
-            <CategoryTitle>Movie</CategoryTitle>
-          </Category>
+          />
           <Category
+            name="Ova"
+            actived={categories.ova}
             onPress={() => handleActiveCategoryButton('ova')}
-            categoryActived={categories.ova}
-          >
-            <CategoryTitle>Ova</CategoryTitle>
-          </Category>
+          />
           <Category
+            name="Shoujo"
+            actived={categories.shoujo}
             onPress={() => handleActiveCategoryButton('shoujo')}
-            categoryActived={categories.shoujo}
-          >
-            <CategoryTitle>Shoujo</CategoryTitle>
-          </Category>
+          />
           <Category
+            name="Academy"
+            actived={categories.academy}
             onPress={() => handleActiveCategoryButton('academy')}
-            categoryActived={categories.academy}
-          >
-            <CategoryTitle>Academy</CategoryTitle>
-          </Category>
+          />
         </CategoriesContainer>
 
         <AnimesContainer showsHorizontalScrollIndicator={false} horizontal>
-          <Anime>
-            <Image style={{ width: 135, height: 170 }} source={animeImg} />
-            <AnimeTitle>Owarimonogatari</AnimeTitle>
-            <AnimeDescription>2018 - 24 eps</AnimeDescription>
-          </Anime>
-          <Anime>
-            <Image style={{ width: 135, height: 170 }} source={animeImg} />
-            <AnimeTitle>Owarimonogatari</AnimeTitle>
-            <AnimeDescription>2018 - 24 eps</AnimeDescription>
-          </Anime>
-          <Anime>
-            <Image style={{ width: 135, height: 170 }} source={animeImg} />
-            <AnimeTitle>Owarimonogatari</AnimeTitle>
-            <AnimeDescription>2018 - 24 eps</AnimeDescription>
-          </Anime>
-          <Anime>
-            <Image style={{ width: 135, height: 170 }} source={animeImg} />
-            <AnimeTitle>Owarimonogatari</AnimeTitle>
-            <AnimeDescription>2018 - 24 eps</AnimeDescription>
-          </Anime>
+          <Anime
+            name={'Owarimonogatari'}
+            description={'2018 - 24 eps'}
+            image={animeImg}
+          />
+          <Anime
+            name={'Owarimonogatari'}
+            description={'2018 - 24 eps'}
+            image={animeImg}
+          />
+          <Anime
+            name={'Owarimonogatari'}
+            description={'2018 - 24 eps'}
+            image={animeImg}
+          />
+          <Anime
+            name={'Owarimonogatari'}
+            description={'2018 - 24 eps'}
+            image={animeImg}
+          />
+          <Anime
+            name={'Owarimonogatari'}
+            description={'2018 - 24 eps'}
+            image={animeImg}
+          />
         </AnimesContainer>
 
         <SubTitleLastEpisodieTitle>

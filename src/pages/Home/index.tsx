@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, Image } from 'react-native'
+import { Text } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
 
@@ -10,6 +10,7 @@ import { Utils } from '../../utils'
 
 import { Category } from '../../components/Category'
 import { Anime } from '../../components/Anime'
+import { LastEpisodie } from '../../components/LastEpisodie'
 
 import {
   Container,
@@ -25,10 +26,10 @@ import {
   // AnimeDescription,
   SubTitleLastEpisodieTitle,
   LastEpisodiesContainer,
-  LastEpisodieImage,
-  LastEpisodie,
-  LastEpisodieDescription,
-  LastEpisodieAnimeName,
+  // LastEpisodieImage,
+  // LastEpisodie,
+  // LastEpisodieDescription,
+  // LastEpisodieAnimeName,
   SubTitleGenresTitle,
   GenresContainer,
   Genre,
@@ -183,26 +184,31 @@ export function Home(): JSX.Element {
           showsHorizontalScrollIndicator={false}
           horizontal
         >
-          <LastEpisodie>
-            <LastEpisodieImage source={animeThumbnailImg} />
-            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
-            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
-          </LastEpisodie>
-          <LastEpisodie>
-            <LastEpisodieImage source={animeThumbnailImg} />
-            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
-            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
-          </LastEpisodie>
-          <LastEpisodie>
-            <LastEpisodieImage source={animeThumbnailImg} />
-            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
-            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
-          </LastEpisodie>
-          <LastEpisodie>
-            <LastEpisodieImage source={animeThumbnailImg} />
-            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
-            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
-          </LastEpisodie>
+          <LastEpisodie
+            description={'EP - 20 Realeased'}
+            name={'Aldnoah Zero'}
+            image={animeThumbnailImg}
+          />
+          <LastEpisodie
+            description={'EP - 20 Realeased'}
+            name={'Aldnoah Zero'}
+            image={animeThumbnailImg}
+          />
+          <LastEpisodie
+            description={'EP - 20 Realeased'}
+            name={'Aldnoah Zero'}
+            image={animeThumbnailImg}
+          />
+          <LastEpisodie
+            description={'EP - 20 Realeased'}
+            name={'Aldnoah Zero'}
+            image={animeThumbnailImg}
+          />
+          <LastEpisodie
+            description={'EP - 20 Realeased'}
+            name={'Aldnoah Zero'}
+            image={animeThumbnailImg}
+          />
         </LastEpisodiesContainer>
 
         <SubTitleGenresTitle>Genres</SubTitleGenresTitle>

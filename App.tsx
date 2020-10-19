@@ -1,21 +1,40 @@
-import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
+import { useFonts } from 'expo-font'
+import {
+  // eslint-disable-next-line camelcase
+  Nunito_300Light,
+  // eslint-disable-next-line camelcase
+  Nunito_400Regular,
+  // eslint-disable-next-line camelcase
+  Nunito_700Bold,
+  // eslint-disable-next-line camelcase
+  Nunito_900Black
+} from '@expo-google-fonts/nunito'
 
-export default function App() {
+import { AppRoutes } from './src/routes'
+
+export default function App(): JSX.Element {
+  const [fontsLoaded] = useFonts({
+    Nunito_300Light,
+    Nunito_400Regular,
+    Nunito_700Bold,
+    Nunito_900Black
+  })
+
+  if (!fontsLoaded) {
+    return (
+      <View>
+        <Text>Charging....</Text>
+      </View>
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <AppRoutes />
+
+      <StatusBar barStyle="light-content" />
+    </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})

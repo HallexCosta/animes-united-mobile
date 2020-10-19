@@ -10,16 +10,20 @@ import {
   Container,
   Header,
   Title,
+  Main,
   CategoriesContainer,
   Category,
   CategoryTitle,
   AnimesContainer,
   Anime,
   AnimeTitle,
-  AnimeDetail,
+  AnimeDescription,
   SubTitleLastEpisodieTitle,
   LastEpisodiesContainer,
+  LastEpisodieImage,
   LastEpisodie,
+  LastEpisodieDescription,
+  LastEpisodieAnimeName,
   SubTitleGenresTitle,
   GenresContainer,
   Genre,
@@ -28,8 +32,9 @@ import {
   NavigateContainer,
   NavigateText
 } from './styles'
+import { activeButton } from '../../utils/activeButton'
 
-type CategoriesProps = {
+export type CategoriesProps = {
   all: boolean
   tv: boolean
   movie: boolean
@@ -38,14 +43,14 @@ type CategoriesProps = {
   academy: boolean
 }
 
-type GenresProps = {
+export type GenresProps = {
   action: boolean
   adventure: boolean
   harem: boolean
   romance: boolean
 }
 
-type NavigatesProps = {
+export type NavigatesProps = {
   home: boolean
   browse: boolean
   schedule: boolean
@@ -84,57 +89,15 @@ export function Home(): JSX.Element {
   })
 
   function handleActiveCategoryButton(currentCategory: string) {
-    Object.keys(categories).map(categoryName => {
-      if (categoryName === currentCategory) {
-        setCategories({
-          ...categories,
-          [currentCategory]: true
-        })
-      } else {
-        setCategories({
-          ...categories,
-          all: false,
-          [categoryName]: false,
-          [currentCategory]: true
-        })
-      }
-    })
+    setCategories(activeButton(categories, currentCategory))
   }
 
   function handleActiveGenreButton(currentGenre: string) {
-    Object.keys(genres).map(genreName => {
-      if (genreName === currentGenre) {
-        setGenres({
-          ...genres,
-          [currentGenre]: true
-        })
-      } else {
-        setGenres({
-          ...genres,
-          action: false,
-          [genreName]: false,
-          [currentGenre]: true
-        })
-      }
-    })
+    setGenres(activeButton(genres, currentGenre))
   }
 
   function handleActiveNavigateButton(curretNavigate: string) {
-    Object.keys(navigates).map(navigateName => {
-      if (navigateName === curretNavigate) {
-        setNavigates({
-          ...navigates,
-          [curretNavigate]: true
-        })
-      } else {
-        setNavigates({
-          ...navigates,
-          home: false,
-          [navigateName]: false,
-          [curretNavigate]: true
-        })
-      }
-    })
+    setNavigates(activeButton(navigates, curretNavigate))
   }
 
   return (
@@ -144,138 +107,135 @@ export function Home(): JSX.Element {
         <Feather name="search" size={24} color="#fff" />
       </Header>
 
-      <CategoriesContainer showsHorizontalScrollIndicator={false} horizontal>
-        <Category
-          onPress={() => handleActiveCategoryButton('all')}
-          categoryActived={categories.all}
-        >
-          <CategoryTitle>All</CategoryTitle>
-        </Category>
-        <Category
-          onPress={() => handleActiveCategoryButton('tv')}
-          categoryActived={categories.tv}
-        >
-          <CategoryTitle>TV</CategoryTitle>
-        </Category>
-        <Category
-          onPress={() => handleActiveCategoryButton('movie')}
-          categoryActived={categories.movie}
-        >
-          <CategoryTitle>Movie</CategoryTitle>
-        </Category>
-        <Category
-          onPress={() => handleActiveCategoryButton('ova')}
-          categoryActived={categories.ova}
-        >
-          <CategoryTitle>Ova</CategoryTitle>
-        </Category>
-        <Category
-          onPress={() => handleActiveCategoryButton('shoujo')}
-          categoryActived={categories.shoujo}
-        >
-          <CategoryTitle>Shoujo</CategoryTitle>
-        </Category>
-        <Category
-          onPress={() => handleActiveCategoryButton('academy')}
-          categoryActived={categories.academy}
-        >
-          <CategoryTitle>Academy</CategoryTitle>
-        </Category>
-      </CategoriesContainer>
+      <Main>
+        <CategoriesContainer showsHorizontalScrollIndicator={false} horizontal>
+          <Category
+            onPress={() => handleActiveCategoryButton('all')}
+            categoryActived={categories.all}
+          >
+            <CategoryTitle>All</CategoryTitle>
+          </Category>
+          <Category
+            onPress={() => handleActiveCategoryButton('tv')}
+            categoryActived={categories.tv}
+          >
+            <CategoryTitle>TV</CategoryTitle>
+          </Category>
+          <Category
+            onPress={() => handleActiveCategoryButton('movie')}
+            categoryActived={categories.movie}
+          >
+            <CategoryTitle>Movie</CategoryTitle>
+          </Category>
+          <Category
+            onPress={() => handleActiveCategoryButton('ova')}
+            categoryActived={categories.ova}
+          >
+            <CategoryTitle>Ova</CategoryTitle>
+          </Category>
+          <Category
+            onPress={() => handleActiveCategoryButton('shoujo')}
+            categoryActived={categories.shoujo}
+          >
+            <CategoryTitle>Shoujo</CategoryTitle>
+          </Category>
+          <Category
+            onPress={() => handleActiveCategoryButton('academy')}
+            categoryActived={categories.academy}
+          >
+            <CategoryTitle>Academy</CategoryTitle>
+          </Category>
+        </CategoriesContainer>
 
-      <AnimesContainer showsHorizontalScrollIndicator={false} horizontal>
-        <Anime>
-          <Image style={{ width: 135, height: 170 }} source={animeImg} />
-          <AnimeTitle>Owarimonogatari</AnimeTitle>
-          <AnimeDetail>2018 - 24 eps</AnimeDetail>
-        </Anime>
-        <Anime>
-          <Image style={{ width: 135, height: 170 }} source={animeImg} />
-          <AnimeTitle>Owarimonogatari</AnimeTitle>
-          <AnimeDetail>2018 - 24 eps</AnimeDetail>
-        </Anime>
-        <Anime>
-          <Image style={{ width: 135, height: 170 }} source={animeImg} />
-          <AnimeTitle>Owarimonogatari</AnimeTitle>
-          <AnimeDetail>2018 - 24 eps</AnimeDetail>
-        </Anime>
-        <Anime>
-          <Image style={{ width: 135, height: 170 }} source={animeImg} />
-          <AnimeTitle>Owarimonogatari</AnimeTitle>
-          <AnimeDetail>2018 - 24 eps</AnimeDetail>
-        </Anime>
-      </AnimesContainer>
+        <AnimesContainer showsHorizontalScrollIndicator={false} horizontal>
+          <Anime>
+            <Image style={{ width: 135, height: 170 }} source={animeImg} />
+            <AnimeTitle>Owarimonogatari</AnimeTitle>
+            <AnimeDescription>2018 - 24 eps</AnimeDescription>
+          </Anime>
+          <Anime>
+            <Image style={{ width: 135, height: 170 }} source={animeImg} />
+            <AnimeTitle>Owarimonogatari</AnimeTitle>
+            <AnimeDescription>2018 - 24 eps</AnimeDescription>
+          </Anime>
+          <Anime>
+            <Image style={{ width: 135, height: 170 }} source={animeImg} />
+            <AnimeTitle>Owarimonogatari</AnimeTitle>
+            <AnimeDescription>2018 - 24 eps</AnimeDescription>
+          </Anime>
+          <Anime>
+            <Image style={{ width: 135, height: 170 }} source={animeImg} />
+            <AnimeTitle>Owarimonogatari</AnimeTitle>
+            <AnimeDescription>2018 - 24 eps</AnimeDescription>
+          </Anime>
+        </AnimesContainer>
 
-      <SubTitleLastEpisodieTitle>
-        Last <Text style={{ color: '#0C1EDF' }}>Episode</Text>
-      </SubTitleLastEpisodieTitle>
+        <SubTitleLastEpisodieTitle>
+          Last <Text style={{ color: '#1c5edf' }}>Episode</Text>
+        </SubTitleLastEpisodieTitle>
 
-      <LastEpisodiesContainer showsHorizontalScrollIndicator={false} horizontal>
-        <LastEpisodie>
-          <Image
-            source={animeThumbnailImg}
-            style={{ width: 135, height: 80 }}
-          />
-          <Text>EP 20</Text>
-        </LastEpisodie>
-        <LastEpisodie>
-          <Image
-            source={animeThumbnailImg}
-            style={{ width: 135, height: 80 }}
-          />
-          <Text>EP 20</Text>
-        </LastEpisodie>
-        <LastEpisodie>
-          <Image
-            source={animeThumbnailImg}
-            style={{ width: 135, height: 80 }}
-          />
-          <Text>EP 20</Text>
-        </LastEpisodie>
-        <LastEpisodie>
-          <Image
-            source={animeThumbnailImg}
-            style={{ width: 135, height: 80 }}
-          />
-          <Text>EP 20</Text>
-        </LastEpisodie>
-      </LastEpisodiesContainer>
+        <LastEpisodiesContainer
+          showsHorizontalScrollIndicator={false}
+          horizontal
+        >
+          <LastEpisodie>
+            <LastEpisodieImage source={animeThumbnailImg} />
+            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
+            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
+          </LastEpisodie>
+          <LastEpisodie>
+            <LastEpisodieImage source={animeThumbnailImg} />
+            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
+            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
+          </LastEpisodie>
+          <LastEpisodie>
+            <LastEpisodieImage source={animeThumbnailImg} />
+            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
+            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
+          </LastEpisodie>
+          <LastEpisodie>
+            <LastEpisodieImage source={animeThumbnailImg} />
+            <LastEpisodieDescription>EP - 20 Realeased</LastEpisodieDescription>
+            <LastEpisodieAnimeName>Aldnoah Zero</LastEpisodieAnimeName>
+          </LastEpisodie>
+        </LastEpisodiesContainer>
 
-      <SubTitleGenresTitle>Genres</SubTitleGenresTitle>
+        <SubTitleGenresTitle>Genres</SubTitleGenresTitle>
 
-      <GenresContainer>
-        <Genre
-          onPress={() => handleActiveGenreButton('action')}
-          genreActived={genres.action}
-        >
-          <GenreTitle genreActived={genres.action}>Action</GenreTitle>
-        </Genre>
-        <Genre
-          onPress={() => handleActiveGenreButton('adventure')}
-          genreActived={genres.adventure}
-        >
-          <GenreTitle genreActived={genres.adventure}>Adventure</GenreTitle>
-        </Genre>
-        <Genre
-          onPress={() => handleActiveGenreButton('harem')}
-          genreActived={genres.harem}
-        >
-          <GenreTitle genreActived={genres.harem}>Harem</GenreTitle>
-        </Genre>
-        <Genre
-          onPress={() => handleActiveGenreButton('romance')}
-          genreActived={genres.romance}
-        >
-          <GenreTitle genreActived={genres.romance}>Romance</GenreTitle>
-        </Genre>
-      </GenresContainer>
+        <GenresContainer>
+          <Genre
+            onPress={() => handleActiveGenreButton('action')}
+            genreActived={genres.action}
+          >
+            <GenreTitle genreActived={genres.action}>Action</GenreTitle>
+          </Genre>
+          <Genre
+            onPress={() => handleActiveGenreButton('adventure')}
+            genreActived={genres.adventure}
+          >
+            <GenreTitle genreActived={genres.adventure}>Adventure</GenreTitle>
+          </Genre>
+          <Genre
+            onPress={() => handleActiveGenreButton('harem')}
+            genreActived={genres.harem}
+          >
+            <GenreTitle genreActived={genres.harem}>Harem</GenreTitle>
+          </Genre>
+          <Genre
+            onPress={() => handleActiveGenreButton('romance')}
+            genreActived={genres.romance}
+          >
+            <GenreTitle genreActived={genres.romance}>Romance</GenreTitle>
+          </Genre>
+        </GenresContainer>
+      </Main>
 
       <Footer>
         <NavigateContainer onPress={() => handleActiveNavigateButton('home')}>
           <Feather
             name="home"
             size={20}
-            color={navigates.home ? '#0c1edf' : '#222222'}
+            color={navigates.home ? '#3c5edf' : '#222222'}
           />
           <NavigateText navigateActived={navigates.home}>Home</NavigateText>
         </NavigateContainer>
@@ -283,7 +243,7 @@ export function Home(): JSX.Element {
           <Feather
             name="folder"
             size={20}
-            color={navigates.browse ? '#0c1edf' : '#222222'}
+            color={navigates.browse ? '#3c5edf' : '#222222'}
           />
           <NavigateText navigateActived={navigates.browse}>Browse</NavigateText>
         </NavigateContainer>
@@ -293,7 +253,7 @@ export function Home(): JSX.Element {
           <Feather
             name="calendar"
             size={20}
-            color={navigates.schedule ? '#0c1edf' : '#222222'}
+            color={navigates.schedule ? '#3c5edf' : '#222222'}
           />
           <NavigateText navigateActived={navigates.schedule}>
             Schedule
@@ -305,7 +265,7 @@ export function Home(): JSX.Element {
           <Feather
             name="user"
             size={20}
-            color={navigates.library ? '#0c1edf' : '#222222'}
+            color={navigates.library ? '#3c5edf' : '#222222'}
           />
           <NavigateText navigateActived={navigates.library}>
             Library

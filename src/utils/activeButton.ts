@@ -8,23 +8,23 @@ export function activeButton<ActiveButton>(
   buttons: ActiveButton,
   currentButton: string
 ): ActiveButton {
-  let filterButtons = {} as ActiveButton
+  let newButtons = {} as ActiveButton
 
   Object.keys(buttons).map(buttonName => {
     if (buttonName === currentButton) {
-      filterButtons = {
+      newButtons = {
         ...buttons,
         [currentButton]: true
       }
     } else {
-      filterButtons = {
+      newButtons = {
         ...buttons,
-        all: false,
+        [Object.keys(buttons)[0]]: false,
         [buttonName]: false,
         [currentButton]: true
       }
     }
   })
 
-  return filterButtons
+  return newButtons
 }

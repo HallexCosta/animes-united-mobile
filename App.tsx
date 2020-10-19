@@ -7,6 +7,8 @@ import {
   // eslint-disable-next-line camelcase
   Nunito_400Regular,
   // eslint-disable-next-line camelcase
+  Nunito_600SemiBold,
+  // eslint-disable-next-line camelcase
   Nunito_700Bold,
   // eslint-disable-next-line camelcase
   Nunito_900Black
@@ -18,6 +20,7 @@ export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
     Nunito_300Light,
     Nunito_400Regular,
+    Nunito_600SemiBold,
     Nunito_700Bold,
     Nunito_900Black
   })

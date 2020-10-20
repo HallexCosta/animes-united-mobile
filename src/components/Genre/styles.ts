@@ -2,8 +2,6 @@ import styled from 'styled-components/native'
 
 import { GenreProps } from '.'
 
-export const GenreContainerView = styled.View``
-
 export const GenreContainer = styled.TouchableOpacity<GenreProps>`
   background: ${props => (props.actived ? '#3c5edf' : '#0c0e15')};
 

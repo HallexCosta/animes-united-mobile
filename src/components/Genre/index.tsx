@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacityProps } from 'react-native'
-import { GenreContainer, GenreTitle, GenreContainerView } from './styles'
+import { GenreContainer, GenreTitle } from './styles'
 
 export interface GenreProps extends TouchableOpacityProps {
   name: string

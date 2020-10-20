@@ -3,14 +3,16 @@ import { Text } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
 
-import animeImg from '../../assets/images/darling-in-the-fran-xx.jpg'
-import animeThumbnailImg from '../../assets/images/anime-gataris-thumbnail.png'
-
 import { Utils } from '../../utils'
 
+import { Genre } from '../../components/Genre'
 import { Category } from '../../components/Category'
 import { Anime } from '../../components/Anime'
 import { LastEpisodie } from '../../components/LastEpisodie'
+import { Navigate } from '../../components/Navigate'
+
+import animeImg from '../../assets/images/darling-in-the-fran-xx.jpg'
+import animeThumbnailImg from '../../assets/images/anime-gataris-thumbnail.png'
 
 import {
   Container,
@@ -18,25 +20,12 @@ import {
   Title,
   Main,
   CategoriesContainer,
-  // Category,
-  // CategoryTitle,
   AnimesContainer,
-  // Anime,
-  // AnimeTitle,
-  // AnimeDescription,
   SubTitleLastEpisodieTitle,
   LastEpisodiesContainer,
-  // LastEpisodieImage,
-  // LastEpisodie,
-  // LastEpisodieDescription,
-  // LastEpisodieAnimeName,
   SubTitleGenresTitle,
   GenresContainer,
-  Genre,
-  GenreTitle,
-  Footer,
-  NavigateContainer,
-  NavigateText
+  Footer
 } from './styles'
 
 export type CategoriesProps = {
@@ -60,12 +49,6 @@ export type NavigatesProps = {
   browse: boolean
   schedule: boolean
   library: boolean
-}
-
-export type HomeProps = {
-  categoryActived?: boolean
-  genreActived?: boolean
-  navigateActived?: boolean
 }
 
 export function Home(): JSX.Element {
@@ -117,32 +100,32 @@ export function Home(): JSX.Element {
       <Main>
         <CategoriesContainer showsHorizontalScrollIndicator={false} horizontal>
           <Category
-            name="All"
+            name={'All'}
             actived={categories.all}
-            onPress={() => handleActiveCategoryButton('all')}
+            onPress={() => console.log('Hello Wolrd')}
           />
           <Category
-            name="TV"
+            name={'TV'}
             actived={categories.tv}
             onPress={() => handleActiveCategoryButton('tv')}
           />
           <Category
-            name="Movie"
+            name={'Movie'}
             actived={categories.movie}
             onPress={() => handleActiveCategoryButton('movie')}
           />
           <Category
-            name="Ova"
+            name={'Ova'}
             actived={categories.ova}
             onPress={() => handleActiveCategoryButton('ova')}
           />
           <Category
-            name="Shoujo"
+            name={'Shoujo'}
             actived={categories.shoujo}
             onPress={() => handleActiveCategoryButton('shoujo')}
           />
           <Category
-            name="Academy"
+            name={'Academy'}
             actived={categories.academy}
             onPress={() => handleActiveCategoryButton('academy')}
           />
@@ -215,73 +198,69 @@ export function Home(): JSX.Element {
 
         <GenresContainer>
           <Genre
+            name={'Action'}
             onPress={() => handleActiveGenreButton('action')}
-            genreActived={genres.action}
-          >
-            <GenreTitle genreActived={genres.action}>Action</GenreTitle>
-          </Genre>
+            actived={genres.action}
+          />
           <Genre
+            name={'Adventure'}
             onPress={() => handleActiveGenreButton('adventure')}
-            genreActived={genres.adventure}
-          >
-            <GenreTitle genreActived={genres.adventure}>Adventure</GenreTitle>
-          </Genre>
+            actived={genres.adventure}
+          />
           <Genre
+            name={'Harem'}
             onPress={() => handleActiveGenreButton('harem')}
-            genreActived={genres.harem}
-          >
-            <GenreTitle genreActived={genres.harem}>Harem</GenreTitle>
-          </Genre>
+            actived={genres.harem}
+          />
           <Genre
+            name={'Romance'}
             onPress={() => handleActiveGenreButton('romance')}
-            genreActived={genres.romance}
-          >
-            <GenreTitle genreActived={genres.romance}>Romance</GenreTitle>
-          </Genre>
+            actived={genres.romance}
+          />
         </GenresContainer>
       </Main>
 
       <Footer>
-        <NavigateContainer onPress={() => handleActiveNavigateButton('home')}>
-          <Feather
-            name="home"
-            size={20}
-            color={navigates.home ? '#3c5edf' : '#222222'}
-          />
-          <NavigateText navigateActived={navigates.home}>Home</NavigateText>
-        </NavigateContainer>
-        <NavigateContainer onPress={() => handleActiveNavigateButton('browse')}>
-          <Feather
-            name="folder"
-            size={20}
-            color={navigates.browse ? '#3c5edf' : '#222222'}
-          />
-          <NavigateText navigateActived={navigates.browse}>Browse</NavigateText>
-        </NavigateContainer>
-        <NavigateContainer
+        <Navigate
+          name={'Home'}
+          actived={navigates.home}
+          featherOptions={{
+            name: 'home',
+            color: navigates.home ? '#3c5edf' : '#222222',
+            size: 20
+          }}
+          onPress={() => handleActiveNavigateButton('home')}
+        />
+        <Navigate
+          name={'Browse'}
+          actived={navigates.browse}
+          featherOptions={{
+            name: 'folder',
+            color: navigates.browse ? '#3c5edf' : '#222222',
+            size: 20
+          }}
+          onPress={() => handleActiveNavigateButton('browse')}
+        />
+        <Navigate
+          name={'Schedule'}
+          actived={navigates.schedule}
+          featherOptions={{
+            name: 'calendar',
+            color: navigates.schedule ? '#3c5edf' : '#222222',
+            size: 20
+          }}
           onPress={() => handleActiveNavigateButton('schedule')}
-        >
-          <Feather
-            name="calendar"
-            size={20}
-            color={navigates.schedule ? '#3c5edf' : '#222222'}
-          />
-          <NavigateText navigateActived={navigates.schedule}>
-            Schedule
-          </NavigateText>
-        </NavigateContainer>
-        <NavigateContainer
+        />
+        <Navigate
+          name={'Library'}
+          actived={navigates.library}
+          featherOptions={{
+            name: 'user',
+            color: navigates.library ? '#3c5edf' : '#222222',
+            size: 20
+          }}
           onPress={() => handleActiveNavigateButton('library')}
-        >
-          <Feather
-            name="user"
-            size={20}
-            color={navigates.library ? '#3c5edf' : '#222222'}
-          />
-          <NavigateText navigateActived={navigates.library}>
-            Library
-          </NavigateText>
-        </NavigateContainer>
+        />
       </Footer>
     </Container>
   )

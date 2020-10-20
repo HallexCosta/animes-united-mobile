@@ -5,8 +5,8 @@ export const AnimeContainer = styled.View`
 `
 
 export const AnimeImage = styled.Image`
-  width: 135;
-  height: 170;
+  width: 135px;
+  height: 170px;
 `
 
 export const AnimeTitle = styled.Text`

@@ -1,6 +1,13 @@
-import { CategoriesProps, GenresProps, NavigatesProps } from '../pages/Home'
+import {
+  CategoriesStateProps,
+  GenresStateProps,
+  NavigatesStateProps
+} from '../pages/Home'
 
-type ActiveButtonHome = CategoriesProps | GenresProps | NavigatesProps
+type ActiveButtonHome =
+  | CategoriesStateProps
+  | GenresStateProps
+  | NavigatesStateProps
 
 type ActiveButton = ActiveButtonHome
 

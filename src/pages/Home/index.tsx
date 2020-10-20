@@ -104,7 +104,7 @@ export function Home(): JSX.Element {
           <Category
             name={'All'}
             actived={categories.all}
-            onPress={() => console.log('Hello Wolrd')}
+            onPress={() => handleActiveCategoryButton('all')}
           />
           <Category
             name={'TV'}

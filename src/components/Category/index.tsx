@@ -2,14 +2,18 @@ import React from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import { CategoryContainer, CategoryTitle } from './styles'
 
-export interface Props extends TouchableOpacityProps {
+export interface CategoryProps extends TouchableOpacityProps {
   name: string
   actived: boolean
 }
 
-export function Category({ name, actived }: Props): JSX.Element {
+export function Category({
+  name,
+  actived,
+  onPress
+}: CategoryProps): JSX.Element {
   return (
-    <CategoryContainer actived={actived}>
+    <CategoryContainer name={name} actived={actived} onPress={onPress}>
       <CategoryTitle>{name}</CategoryTitle>
     </CategoryContainer>
   )

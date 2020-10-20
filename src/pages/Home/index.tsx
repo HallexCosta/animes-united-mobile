@@ -28,7 +28,7 @@ import {
   Footer
 } from './styles'
 
-export type CategoriesProps = {
+export type CategoriesStateProps = {
   all: boolean
   tv: boolean
   movie: boolean
@@ -37,14 +37,14 @@ export type CategoriesProps = {
   academy: boolean
 }
 
-export type GenresProps = {
+export type GenresStateProps = {
   action: boolean
   adventure: boolean
   harem: boolean
   romance: boolean
 }
 
-export type NavigatesProps = {
+export type NavigatesStateProps = {
   home: boolean
   browse: boolean
   schedule: boolean
@@ -53,7 +53,7 @@ export type NavigatesProps = {
 
 export function Home(): JSX.Element {
   // State effect
-  const [categories, setCategories] = useState<CategoriesProps>({
+  const [categories, setCategories] = useState<CategoriesStateProps>({
     all: true,
     tv: false,
     movie: false,
@@ -62,14 +62,14 @@ export function Home(): JSX.Element {
     academy: false
   })
 
-  const [genres, setGenres] = useState<GenresProps>({
+  const [genres, setGenres] = useState<GenresStateProps>({
     action: true,
     adventure: false,
     harem: false,
     romance: false
   })
 
-  const [navigates, setNavigates] = useState<NavigatesProps>({
+  const [navigates, setNavigates] = useState<NavigatesStateProps>({
     home: true,
     browse: false,
     schedule: false,
@@ -78,16 +78,18 @@ export function Home(): JSX.Element {
 
   function handleActiveCategoryButton(currentCategory: string) {
     setCategories(
-      Utils.activeButton<CategoriesProps>(categories, currentCategory)
+      Utils.activeButton<CategoriesStateProps>(categories, currentCategory)
     )
   }
 
   function handleActiveGenreButton(currentGenre: string) {
-    setGenres(Utils.activeButton<GenresProps>(genres, currentGenre))
+    setGenres(Utils.activeButton<GenresStateProps>(genres, currentGenre))
   }
 
   function handleActiveNavigateButton(curretNavigate: string) {
-    setNavigates(Utils.activeButton<NavigatesProps>(navigates, curretNavigate))
+    setNavigates(
+      Utils.activeButton<NavigatesStateProps>(navigates, curretNavigate)
+    )
   }
 
   return (
